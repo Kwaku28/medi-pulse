@@ -348,3 +348,7 @@
 .PhoneInputInput::placeholder {
   color: #1a1d21;
 }
+
+.gif {
+  width: auto;
+}
