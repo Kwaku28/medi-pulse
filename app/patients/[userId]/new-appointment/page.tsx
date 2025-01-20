@@ -3,8 +3,9 @@ import { getPatient } from "@/lib/actions/patient.actions";
 import Image from "next/image";
 
 export default async function NewAppointment({
-  params: { userId },
+  params
 }: SearchParamProps) {
+  const { userId } = await params;
   const patient = await getPatient(userId);
 
   return (
