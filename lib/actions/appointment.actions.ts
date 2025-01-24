@@ -1,7 +1,7 @@
 "use server"
 
 import { ID, Query } from "node-appwrite";
-import { APPOINTMENT_COLLECTION_ID, DATABASE_ID, databases } from "../appwrite.config";
+import { APPOINTMENT_COLLECTION_ID, DATABASE_ID, databases, messaging } from "../appwrite.config";
 import { formatDateTime, parseStringify } from "../utils";
 import { revalidatePath } from "next/cache";
 import { Appointment } from "@/types/appwrite.types";
@@ -86,6 +86,7 @@ export const updateAppointment = async ({
   userId,
   appointment,
   type,
+  timeZone,
 }: UpdateAppointmentParams) => {
   try {
     const updatedAppointment = await databases.updateDocument(
@@ -97,9 +98,35 @@ export const updateAppointment = async ({
 
     if (!updatedAppointment) throw Error;
 
+    const smsMessage = `
+      Greetings from MediPulse. 
+      ${type === "schedule" ? `Your appointment is confirmed for 
+      ${formatDateTime(appointment.schedule!, timeZone).dateTime} with Dr. 
+      ${appointment.primaryPhysician}`
+        : `We regret to inform that your appointment for 
+      ${formatDateTime(appointment.schedule!, timeZone).dateTime} is cancelled. 
+      Reason:  ${appointment.cancellationReason}`}.`;
+
+    await sendSMSNotification(userId, smsMessage);
+
     revalidatePath("/admin");
     return parseStringify(updatedAppointment);
   } catch (error) {
     console.error("An error occurred while scheduling an appointment:", error);
   }
 };
+
+export const sendSMSNotification = async (userId: string, content: string) => {
+  try {
+    const messages = await messaging.createSms(
+      ID.unique(),
+      content,
+      [],
+      [userId]
+    )
+
+    return parseStringify(messages);
+  } catch (error) {
+    console.log(error)
+  }
+}
