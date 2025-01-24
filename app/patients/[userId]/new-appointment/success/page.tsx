@@ -5,9 +5,15 @@ import { Doctors } from "@/constants";
 import { getAppointment } from "@/lib/actions/appointment.actions";
 import { formatDateTime } from "@/lib/utils";
 
+import * as Sentry from "@sentry/nextjs";
+import { getUser } from "@/lib/actions/patient.actions";
+
 const Success = async ({ params, searchParams }: SearchParamProps) => {
   const { userId } = await params;
   const { appointmentId } = await searchParams;
+  const user = await getUser(userId);
+
+ Sentry.metrics.set("user_view_appointment-success", user.name)
 
   if (!appointmentId || typeof appointmentId !== "string") {
     return (
