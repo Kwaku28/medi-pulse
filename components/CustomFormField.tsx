@@ -70,7 +70,7 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
         </div>
       );
 
-    case FormFieldType.TEXTAREAR:
+    case FormFieldType.TEXTAREA:
       return (
         <FormControl>
           <Textarea
