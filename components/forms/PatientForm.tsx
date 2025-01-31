@@ -13,7 +13,7 @@ import { createUser } from "@/lib/actions/patient.actions";
 
 export enum FormFieldType {
   INPUT = "input",
-  TEXTAREAR = 'textarea',
+  TEXTAREA = 'textarea',
   CHECKBOX = "checkbox",
   PHONE_INPUT = "phoneInput",
   DATE_PICKER = "datePicker",
