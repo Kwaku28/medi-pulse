@@ -178,7 +178,7 @@ const AppointmentForm = ({
 
             <div className="flex flex-col gap-6 xl:flex-row">
               <CustomFormField
-                fieldType={FormFieldType.TEXTAREAR}
+                fieldType={FormFieldType.TEXTAREA}
                 control={form.control}
                 name="reason"
                 label="Reason for appointment"
@@ -186,7 +186,7 @@ const AppointmentForm = ({
               />
 
               <CustomFormField
-                fieldType={FormFieldType.TEXTAREAR}
+                fieldType={FormFieldType.TEXTAREA}
                 control={form.control}
                 name="note"
                 label="Notes"
@@ -198,7 +198,7 @@ const AppointmentForm = ({
 
         {type === "cancel" && (
           <CustomFormField
-            fieldType={FormFieldType.TEXTAREAR}
+            fieldType={FormFieldType.TEXTAREA}
             control={form.control}
             name="cancellationReason"
             label="Reason for cancellation"
