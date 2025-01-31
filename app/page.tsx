@@ -10,19 +10,19 @@ export default async function Home({ searchParams }: SearchParamProps) {
   return (
     <div className="flex h-screen max-h-screen">
       {isAdmin && <PasskeyModal />}
-      <section className="remove-scrollbar container my-auto">
+      <section className="remove-scrollbar container">
         <div className="sub-container max-w-[496px]">
           <Image
             src="/assets/icons/logo-full.svg"
             alt="logo"
             width={1000}
             height={1000}
-            className="mb-12 h-10 w-fit"
+            className="gif mb-12 h-10 w-fit"
           />
 
           <PatientForm />
 
-          <div className="text-14-regular mt-20 flex justify-between">
+          <div className="text-14-regular mt-20 flex justify-between pb-5">
             <p className="justify-items-end text-dark-600 xl:text-left">
               © 2025 MediPulse
             </p>
