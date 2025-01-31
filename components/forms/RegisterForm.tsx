@@ -79,7 +79,7 @@ const RegisterForm = ({ user }: { user: User }) => {
 
         <section className="space-y-6">
           <div className="mb-9 space-y-1">
-            <h2 className="sub-header">Personal Infomation</h2>
+            <h2 className="sub-header">Personal Information</h2>
           </div>
         </section>
 
@@ -181,7 +181,7 @@ const RegisterForm = ({ user }: { user: User }) => {
 
         <section className="space-y-6">
           <div className="mb-9 space-y-1">
-            <h2 className="sub-header">Medical Infomation</h2>
+            <h2 className="sub-header">Medical Information</h2>
           </div>
         </section>
 
@@ -227,14 +227,14 @@ const RegisterForm = ({ user }: { user: User }) => {
 
         <div className="flex flex-col gap-6 xl:flex-row">
           <CustomFormField
-            fieldType={FormFieldType.TEXTAREAR}
+            fieldType={FormFieldType.TEXTAREA}
             control={form.control}
             name="allergies"
             label="Allergies"
             placeholder="Nuts, Penicillin"
           />
           <CustomFormField
-            fieldType={FormFieldType.TEXTAREAR}
+            fieldType={FormFieldType.TEXTAREA}
             control={form.control}
             name="currentMedication"
             label="Current Medication"
@@ -244,14 +244,14 @@ const RegisterForm = ({ user }: { user: User }) => {
 
         <div className="flex flex-col gap-6 xl:flex-row">
           <CustomFormField
-            fieldType={FormFieldType.TEXTAREAR}
+            fieldType={FormFieldType.TEXTAREA}
             control={form.control}
             name="familyMedicalHistory"
             label="Family Medical History"
             placeholder="Father is diabetic"
           />
           <CustomFormField
-            fieldType={FormFieldType.TEXTAREAR}
+            fieldType={FormFieldType.TEXTAREA}
             control={form.control}
             name="pastMedicalHistory"
             label="Past Medical History"
